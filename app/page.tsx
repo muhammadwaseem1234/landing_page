@@ -442,9 +442,9 @@ export default function Home() {
               </p>
               <a
                 className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-[#e6ff55] px-5 py-3 font-semibold text-[#171814] transition hover:bg-white"
-                href="mailto:hello@waseem.dev"
+                href="mailto:mmuhammadwaseem2004@gmail.com"
               >
-                Email hello@waseem.dev
+                Email Us
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>

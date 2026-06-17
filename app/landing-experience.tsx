@@ -103,6 +103,100 @@ export default function LandingExperience({ children }: LandingExperienceProps) 
         });
       });
 
+      gsap.utils.toArray<HTMLElement>(".service-card").forEach((card) => {
+        const browser = card.querySelector(".mini-browser");
+        const browserLines = card.querySelectorAll(".mini-lines span");
+        const dashboardTiles = card.querySelectorAll(".mini-dashboard span");
+        const workflowNodes = card.querySelectorAll(".mini-workflow span");
+        const workflowConnectors = card.querySelectorAll(".mini-workflow i");
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 82%",
+          },
+          defaults: { ease: "power3.out" },
+        });
+
+        if (browser) {
+          timeline
+            .from(browser, { autoAlpha: 0, y: 22, duration: 0.5 })
+            .from(
+              card.querySelector(".mini-top"),
+              { scaleX: 0, transformOrigin: "left center", duration: 0.35 },
+              "-=0.18",
+            )
+            .from(
+              card.querySelector(".mini-hero"),
+              { scaleX: 0, transformOrigin: "left center", duration: 0.45 },
+              "-=0.08",
+            )
+            .from(
+              browserLines,
+              {
+                scaleX: 0,
+                transformOrigin: "left center",
+                duration: 0.32,
+                stagger: 0.08,
+              },
+              "-=0.12",
+            )
+            .from(
+              card.querySelector(".mini-cta"),
+              { autoAlpha: 0, scale: 0.72, duration: 0.32 },
+              "-=0.05",
+            );
+        }
+
+        if (dashboardTiles.length) {
+          timeline.from(dashboardTiles, {
+            autoAlpha: 0,
+            y: 24,
+            scale: 0.94,
+            duration: 0.58,
+            stagger: 0.08,
+          });
+
+          gsap.to(dashboardTiles, {
+            y: -7,
+            duration: 1.8,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+            stagger: 0.16,
+          });
+        }
+
+        if (workflowNodes.length) {
+          timeline
+            .from(workflowNodes, {
+              autoAlpha: 0,
+              scale: 0.55,
+              duration: 0.42,
+              stagger: 0.12,
+            })
+            .from(
+              workflowConnectors,
+              {
+                scaleX: 0,
+                transformOrigin: "left center",
+                duration: 0.48,
+                stagger: 0.12,
+              },
+              "-=0.25",
+            );
+
+          gsap.to(workflowConnectors, {
+            opacity: 0.35,
+            duration: 1.2,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+            stagger: 0.18,
+          });
+        }
+      });
+
       gsap.utils.toArray<HTMLElement>(".process-step, .offer-card").forEach(
         (element) => {
           gsap.from(element, {

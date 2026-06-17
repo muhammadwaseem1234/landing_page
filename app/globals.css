@@ -246,11 +246,33 @@ a {
 }
 
 .service-visual {
+  position: relative;
   min-height: 176px;
+  overflow: hidden;
   border: 1px solid #d9d5ca;
   border-radius: 8px;
   background: #f7f5ef;
   padding: 16px;
+}
+
+.service-visual::after {
+  position: absolute;
+  top: -42%;
+  left: -60%;
+  width: 36%;
+  height: 190%;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  opacity: 0;
+  transform: rotate(14deg) translateX(-40%);
+  transition:
+    opacity 220ms ease,
+    transform 720ms ease;
+}
+
+.service-card:hover .service-visual::after {
+  opacity: 1;
+  transform: rotate(14deg) translateX(520%);
 }
 
 .mini-browser {
@@ -259,6 +281,15 @@ a {
   border-radius: 8px;
   background: #ffffff;
   padding: 13px;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  will-change: transform, opacity;
+}
+
+.service-card:hover .mini-browser {
+  border-color: #c34b27;
+  box-shadow: inset 0 0 0 1px rgba(195, 75, 39, 0.18);
 }
 
 .mini-top {
@@ -273,6 +304,12 @@ a {
   margin-top: 14px;
   border-radius: 6px;
   background: linear-gradient(90deg, #171814, #c34b27);
+  transition: filter 220ms ease;
+  will-change: transform, opacity;
+}
+
+.service-card:hover .mini-hero {
+  filter: saturate(1.2) brightness(1.05);
 }
 
 .mini-lines {
@@ -285,6 +322,7 @@ a {
   height: 7px;
   border-radius: 4px;
   background: #d9d5ca;
+  will-change: transform, opacity;
 }
 
 .mini-lines span:nth-child(1) {
@@ -300,11 +338,28 @@ a {
 }
 
 .mini-cta {
+  position: relative;
   width: 74px;
   height: 20px;
   margin-top: 13px;
+  overflow: hidden;
   border-radius: 5px;
   background: #e6ff55;
+  transition: background 220ms ease;
+  will-change: transform, opacity;
+}
+
+.mini-cta::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.66), transparent);
+  transform: translateX(-110%);
+  animation: cta-sweep 2.3s ease-in-out infinite;
+}
+
+.service-card:hover .mini-cta {
+  background: #7fffd4;
 }
 
 .mini-dashboard {
@@ -320,6 +375,19 @@ a {
   background:
     linear-gradient(180deg, rgba(127, 255, 212, 0.75), rgba(255, 255, 255, 0) 58%),
     #ffffff;
+  background-position: center 0;
+  background-size: 100% 145%;
+  transition:
+    background-position 260ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  will-change: transform, opacity;
+}
+
+.service-card:hover .mini-dashboard span {
+  border-color: #c34b27;
+  background-position: center -16px;
+  box-shadow: inset 0 0 0 1px rgba(195, 75, 39, 0.14);
 }
 
 .mini-dashboard span:nth-child(1) {
@@ -342,6 +410,12 @@ a {
   border-radius: 8px;
   background: #171814;
   box-shadow: none;
+  will-change: transform, opacity;
+}
+
+.mini-workflow i {
+  transform-origin: left center;
+  will-change: transform, opacity;
 }
 
 .mini-workflow span:nth-of-type(2) {
@@ -350,6 +424,22 @@ a {
 
 .mini-workflow span:nth-of-type(3) {
   background: #e6ff55;
+}
+
+.service-card:hover .mini-workflow span {
+  box-shadow: 0 10px 28px rgba(23, 24, 20, 0.16);
+}
+
+@keyframes cta-sweep {
+  0%,
+  44% {
+    transform: translateX(-110%);
+  }
+
+  72%,
+  100% {
+    transform: translateX(110%);
+  }
 }
 
 .conversion-funnel {
