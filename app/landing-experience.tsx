@@ -109,7 +109,50 @@ export default function LandingExperience({ children }: LandingExperienceProps) 
         const dashboardTiles = card.querySelectorAll(".mini-dashboard span");
         const workflowNodes = card.querySelectorAll(".mini-workflow span");
         const workflowConnectors = card.querySelectorAll(".mini-workflow i");
+        const glow = document.getElementById("cursorGlow");
+          window.addEventListener("mousemove", (e) => {
+            gsap.to(glow, {
+              x: e.clientX - 250,
+              y: e.clientY - 250,
+              duration: 1,
+              ease: "power3.out",
+            });
+            gsap.to(".hero-orb-1", {
+  x: 250,
+  y: -150,
+  duration: 12,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut",
+});
 
+gsap.to(".hero-orb-2", {
+  x: -200,
+  y: 200,
+  duration: 15,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut",
+});
+
+gsap.to(".hero-orb-3", {
+  x: 150,
+  y: 120,
+  duration: 10,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut",
+});
+gsap.to(".gooey-background span", {
+  x: "random(-200,200)",
+  y: "random(-200,200)",
+  duration: 10,
+  repeat: -1,
+  yoyo: true,
+  stagger: 1,
+  ease: "sine.inOut",
+});
+          });
         const timeline = gsap.timeline({
           scrollTrigger: {
             trigger: card,

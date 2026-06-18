@@ -83,9 +83,27 @@ const offers = [
 export default function Home() {
   return (
     <LandingExperience>
+      <div id="cursorGlow" />
+      <div className="noise-overlay" />
+
+      <div className="hero-orb hero-orb-1" />
+      <div className="hero-orb hero-orb-2" />
+      <div className="hero-orb hero-orb-3" />
       <main className="min-h-screen bg-[#f7f5ef] text-[#171814]">
         <section className="agency-hero hero relative isolate overflow-hidden px-5 pt-5 text-white sm:px-8 lg:px-12">
           <div className="scene-layer pointer-events-none absolute inset-0 -z-10">
+            <div className="hero-blur-mask">
+            <div className="blur-top" />
+            <div className="blur-bottom" />
+            <div className="blur-left" />
+            <div className="blur-right" />
+          </div>
+
+          <div className="gooey-background">
+            <span />
+            <span />
+            <span />
+          </div>
             <div className="hero-grid" />
             <div className="hero-code hero-window floating-window">
               <div className="window-bar">
@@ -140,7 +158,7 @@ export default function Home() {
           </div>
 
           <header
-            className="mx-auto flex max-w-7xl items-center justify-between border border-white/[0.14] bg-black/[0.18] px-4 py-3 backdrop-blur-md"
+            className="mx-auto flex max-w-7xl items-center justify-between border border-white/[0.14] bg-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-2xl px-4 py-3 backdrop-blur-md"
             data-animate="nav"
           >
             <a className="flex items-center gap-3" href="#top" aria-label="Waseem Studio home">
@@ -150,16 +168,16 @@ export default function Home() {
               <span className="font-semibold">Waseem Studio</span>
             </a>
             <nav className="hidden items-center gap-7 text-sm text-white/[0.74] md:flex">
-              <a className="transition hover:text-white" href="#services">
+              <a className="nav-link transition hover:text-white" href="#services">
                 Services
               </a>
-              <a className="transition hover:text-white" href="#proof">
+              <a className="nav-link transition hover:text-white" href="#proof">
                 Proof
               </a>
-              <a className="transition hover:text-white" href="#process">
+              <a className="nav-link transition hover:text-white" href="#process">
                 Process
               </a>
-              <a className="transition hover:text-white" href="#contact">
+              <a className="nav-link transition hover:text-white" href="#contact">
                 Contact
               </a>
             </nav>
@@ -248,7 +266,7 @@ export default function Home() {
 
                 return (
                   <article
-                    className="reveal service-card group border border-[#d9d5ca] bg-white p-6 shadow-[0_18px_50px_rgba(36,34,25,0.08)]"
+                    className="reveal service-card group border border-[#d9d5ca] bg-white/80 backdrop-blur-xl p-6 shadow-[0_18px_50px_rgba(36,34,25,0.08)]"
                     key={service.title}
                   >
                     <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-[#171814] text-white">
@@ -442,9 +460,9 @@ export default function Home() {
               </p>
               <a
                 className="mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-[#e6ff55] px-5 py-3 font-semibold text-[#171814] transition hover:bg-white"
-                href="mailto:mmuhammadwaseem2004@gmail.com"
+                href="/#contact"
               >
-                Email Us
+                Contact Us
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
